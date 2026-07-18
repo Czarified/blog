@@ -3,8 +3,8 @@ locale = 'en-us'
 title = 'My New Hugo Project'
 
 [params]
-  author = 'Antigravity'
-  description = 'A Hugo blog built with Tailwind CSS 4 and Alpine.js.'
+  author = 'Benjamin Crews'
+  description = 'The personal blog of Benjamin Crews.'
   disable_theme_toggle = false
   disable_stay_uptodate = true
 
@@ -41,3 +41,7 @@ title = 'My New Hugo Project'
     name = 'Posts'
     url = '/posts/'
     weight = 20
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
