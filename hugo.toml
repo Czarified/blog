@@ -1,4 +1,43 @@
 baseURL = 'https://example.org/'
 locale = 'en-us'
 title = 'My New Hugo Project'
-theme = 'ananke'
+
+[params]
+  author = 'Antigravity'
+  description = 'A Hugo blog built with Tailwind CSS 4 and Alpine.js.'
+  disable_theme_toggle = false
+  disable_stay_uptodate = true
+
+[module]
+  [[module.imports]]
+    path = 'tailbliss'
+    [[module.imports.mounts]]
+      source = 'archetypes'
+      target = 'archetypes'
+    [[module.imports.mounts]]
+      source = 'assets'
+      target = 'assets'
+    [[module.imports.mounts]]
+      source = 'data'
+      target = 'data'
+    [[module.imports.mounts]]
+      source = 'i18n'
+      target = 'i18n'
+    [[module.imports.mounts]]
+      source = 'layouts'
+      target = 'layouts'
+    [[module.imports.mounts]]
+      source = 'static'
+      target = 'static'
+
+[menu]
+  [[menu.main]]
+    identifier = 'home'
+    name = 'Home'
+    url = '/'
+    weight = 10
+  [[menu.main]]
+    identifier = 'posts'
+    name = 'Posts'
+    url = '/posts/'
+    weight = 20
