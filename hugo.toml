@@ -1,14 +1,14 @@
-baseURL = 'https://eczarified.github.io/blog'
+baseURL = 'https://eczarified.github.io/blog/'
 locale = 'en-us'
 title = 'My New Hugo Project'
+relativeURLs = true
+canonifyURLs = false
 
 [params]
   author = 'Benjamin Crews'
   description = 'The personal blog of Benjamin Crews.'
   disable_theme_toggle = false
   disable_stay_uptodate = true
-  relativeURLS = true
-  canonifyURLs = false
 
 [module]
   [[module.imports]]
