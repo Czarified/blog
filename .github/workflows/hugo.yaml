@@ -34,7 +34,9 @@ jobs:
           node-version: '24'     # <--- Gives the runner access to npm/node
 
       - name: Install Dependencies
-        run: npm ci              # <--- Installs PostCSS & Tailwind v4 packages
+        run: |
+          npm ci              # <--- Installs PostCSS & Tailwind v4 packages
+          echo "${{ github.workspace }}/node_modules/.bin" >> $GITHUB_PATH"
 
       - name: Setup Pages
         id: pages
