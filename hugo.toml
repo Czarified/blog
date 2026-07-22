@@ -7,6 +7,8 @@ title = 'My New Hugo Project'
   description = 'The personal blog of Benjamin Crews.'
   disable_theme_toggle = false
   disable_stay_uptodate = true
+  relativeURLS = true
+  canonifyURLs = false
 
 [module]
   [[module.imports]]
