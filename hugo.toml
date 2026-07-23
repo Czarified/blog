@@ -7,8 +7,6 @@ canonifyURLs = false
 [params]
   author = 'Benjamin Crews'
   description = 'The personal blog of Benjamin Crews.'
-  disable_theme_toggle = false
-  disable_stay_uptodate = true
 
 [module]
   [[module.imports]]
@@ -47,3 +45,19 @@ canonifyURLs = false
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+# Overrides the "Our Mission" block
+[params.p1]
+  heading = 'About This Site'
+  image = 'images/hero.png'
+  content = [
+    { text = 'Welcome! I write about structural engineering, software development, and personal projects.' }
+  ]
+
+# Overrides or customizes the second section
+[params.p2]
+  heading = 'What I Working On'
+  image = 'images/projects.png'
+  content = [
+    { text = 'Check out my latest blog posts below to see recent projects and tutorials.' }
+  ]
