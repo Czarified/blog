@@ -7,6 +7,8 @@ canonifyURLs = false
 [params]
   author = 'Benjamin Crews'
   description = 'The personal blog of Benjamin Crews.'
+  motto = 'Bloggy McBlogFace'
+  authorimage = 'images/hero.jpg'
 
 [module]
   [[module.imports]]
