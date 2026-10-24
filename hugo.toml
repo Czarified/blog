@@ -44,7 +44,7 @@ enableRobotsTXT = true
 
 [params]
   author = 'Benjamin Crews'
-  moto = "Unpolished, incorrect, but maybe there's a good idea here somewhere..."
+  moto = "Unpolished, probably incorrect, but maybe there's a good idea here somewhere..."
   description = 'The personal blog of Benjamin Crews.'
   og_image = '/images/tailbliss-cover.png'
   newsletter_signup = false
@@ -95,15 +95,23 @@ enableRobotsTXT = true
 [params.p1]
   heading = 'About This Site'
   image = 'images/global/none.jpg'
-  crop = '600x600'      # width x height in pixels; sets the image's shape
+  crop = '600x750'      # width x height in pixels; sets the image's shape
   content = [
-    { text = 'Welcome! I write about structural engineering, software development, and personal projects.' }
+    { text = """
+    Welcome! I write about structural engineering, software development, and personal projects.
+    """},
+    { text = """
+    I'm a huge aerospace nerd and always have been. From a young age I wanted to be a fighter pilot. I slowly realized that I was probably more cut out to build the planes than fly them, and I haven't looked back! Rockets and space are cool, but my heart has always and will always be with anything that flies Hard, Heavy, High, Hot, and Fast. At least one, but preferably all!
+    """},
+    { text = """
+    Outside of aerospace, I follow a lot of tech. I try to keep up with any news related to compute, simulation, PC gaming, and even AI. If I get up to anything there, I might post here about it too.
+    """}
   ]
 
 [params.p2]
   heading = "What I'm Working On"
   image = 'images/global/projects.png'
-  crop = '800x600'     # width x height in pixels; taller than wide = portrait
+  crop = '800x400'     # width x height in pixels; taller than wide = portrait
   content = [
     { text = 'Check out my latest blog posts below to see recent projects and tutorials.' }
   ]
