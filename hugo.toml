@@ -1,79 +1,122 @@
 baseURL = 'https://czarified.github.io/blog/'
 locale = 'en-us'
 title = 'Bloggy McBlogFace'
-theme = 'tailbliss'
-relativeURLs = true
-canonifyURLs = false
+# The site lives in a sub-folder (/blog/), so every link must be built from
+# baseURL. canonifyURLs does that; relativeURLs broke theme images (/blog/blog/...).
+relativeURLs = false
+canonifyURLs = true
 enableEmoji = true
 enableInlineShortcodes = true
 enableGitInfo = false
 enableRobotsTXT = true
 
-# [module]
-#   [[module.imports]]
-#     path = 'tailbliss'
-#     [[module.imports.mounts]]
-#       source = 'archetypes'
-#       target = 'archetypes'
-#     [[module.imports.mounts]]
-#       source = 'assets'
-#       target = 'assets'
-#     [[module.imports.mounts]]
-#       source = 'data'
-#       target = 'data'
-#     [[module.imports.mounts]]
-#       source = 'i18n'
-#       target = 'i18n'
-#     [[module.imports.mounts]]
-#       source = 'layouts'
-#       target = 'layouts'
-#     [[module.imports.mounts]]
-#       source = 'static'
-#       target = 'static'
+# Use the TailBliss theme, but mount everything EXCEPT its demo `content`
+# folder, so the theme's sample posts don't show up on this site.
+[module]
+  [[module.imports]]
+    path = 'tailbliss'
+    [[module.imports.mounts]]
+      source = 'archetypes'
+      target = 'archetypes'
+    [[module.imports.mounts]]
+      source = 'assets'
+      target = 'assets'
+    [[module.imports.mounts]]
+      source = 'data'
+      target = 'data'
+    [[module.imports.mounts]]
+      source = 'i18n'
+      target = 'i18n'
+    [[module.imports.mounts]]
+      source = 'layouts'
+      target = 'layouts'
+    [[module.imports.mounts]]
+      source = 'static'
+      target = 'static'
+
+# Math: text between $...$ (inline) or $$...$$ (display) is passed untouched
+# to layouts/_markup/render-passthrough.html, which renders it with KaTeX.
+[markup.goldmark.extensions.passthrough]
+  enable = true
+  [markup.goldmark.extensions.passthrough.delimiters]
+    block = [['$$', '$$'], ['\[', '\]']]
+    inline = [['$', '$'], ['\(', '\)']]
 
 [params]
   author = 'Benjamin Crews'
   moto = 'Bloggy Blog Blog'
   description = 'The personal blog of Benjamin Crews.'
-  authorimage = '/images/hero.jpg'
   og_image = '/images/tailbliss-cover.png'
+  newsletter_signup = false
 
+  # Big image at the top of the home page. Path is relative to assets/.
+  heroimage = 'images/global/hero.jpg'
+  heroalt = 'Benjamin Crews'
+
+[params.social_media]
+  [params.social_media.github]
+    enabled = true
+    url = 'https://github.com/Czarified'
+  [params.social_media.facebook]
+    enabled = false
+  [params.social_media.instagram]
+    enabled = false
+  [params.social_media.twitter]
+    enabled = false
+
+# Menu URLs have NO leading slash: '/posts/' would point outside /blog/.
 [menu]
   [[menu.main]]
     identifier = 'home'
     name = 'Home'
-    url = '/'
+    url = './'
     weight = 10
   [[menu.main]]
     identifier = 'posts'
     name = 'Posts'
-    url = '/posts/'
+    url = 'posts/'
+    weight = 20
+  [[menu.footer]]
+    identifier = 'home'
+    name = 'Home'
+    url = './'
+    weight = 10
+  [[menu.footer]]
+    identifier = 'posts'
+    name = 'Posts'
+    url = 'posts/'
     weight = 20
 
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
 
+# Home page sections, top to bottom. Image paths are relative to assets/.
 [params.p1]
   heading = 'About This Site'
-  image = '/images/hero.jpg'
+  image = 'images/global/none.jpg'
   content = [
     { text = 'Welcome! I write about structural engineering, software development, and personal projects.' }
   ]
 
 [params.p2]
   heading = 'What I Working On'
-  image = '/images/projects.png'
+  image = 'images/global/projects.png'
   content = [
     { text = 'Check out my latest blog posts below to see recent projects and tutorials.' }
   ]
 
 [params.p3]
   heading = 'I Have No Idea What to Put Here!'
-  image = '/images/none.jpg'
   content = [
     { text = 'Eventually I will figure out something to fill in this space.'},
   ]
   links = [
     { text = 'This goes nowhere', url = '#'}
   ]
+  # The theme shows a grid of logos beside this section; empty hides it.
+  logos = []
+
+[params.p4]
+  heading = 'From the Blog'
+  content = []
