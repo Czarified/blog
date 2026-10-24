@@ -1,4 +1,4 @@
-# Bloggy McBlogFace
+# Back of the Envelope
 
 Personal blog of Benjamin Crews, published at <https://czarified.github.io/blog/>.
 
@@ -51,8 +51,8 @@ Everything on the home page is set in `hugo.toml`. From top to bottom:
 | Section | Keys in `hugo.toml` | Image is cropped to |
 | --- | --- | --- |
 | Hero (title, tagline, big photo) | `title`, `params.moto`, `params.description`, `params.heroimage`, `params.heroalt` | 576 × 576 square |
-| About This Site | `[params.p1]`: `heading`, `image`, `content` | 600 × 600 square |
-| What I'm Working On | `[params.p2]`: `heading`, `image`, `content` | 800 × 600 |
+| About This Site | `[params.p1]`: `heading`, `image`, `crop`, `content` | `crop` (default 600 × 600) |
+| What I'm Working On | `[params.p2]`: `heading`, `image`, `crop`, `content` | `crop` (default 800 × 600) |
 | Third section | `[params.p3]`: `heading`, `content`, `links`, `logos` | (logo grid, see below) |
 | Latest posts | `[params.p4]`: `heading` (shows the 3 newest posts automatically) | — |
 
@@ -68,6 +68,21 @@ Everything on the home page is set in `hugo.toml`. From top to bottom:
 3. Save. `hugo server` shows the change immediately.
 
 Hugo resizes and crops the image automatically. The crop keeps the most interesting part of the image (`smart` anchor), so a portrait photo works fine in the square hero.
+
+To change the shape of the p1 or p2 image, set `crop` to `'WIDTHxHEIGHT'` in pixels. Only the ratio matters for the shape: `'800x1000'` is a tall portrait, `'800x600'` is landscape, and `'600x600'` is square. Use numbers at least as large as the displayed size (about 450–600 px wide) so the image stays sharp.
+
+### Logo, browser-tab icon and share preview
+
+These are plain files in `static/`. A file in the repo's `static/` folder replaces the theme's file with the same name, so no settings need to change:
+
+| What | File to create | Format and size |
+| --- | --- | --- |
+| Logo at the top left of every page | `static/images/site-logo.svg` | **SVG**, square, light-colored (the nav bar is near-black). Shown at 36 × 36 px. |
+| Browser tab icon | `static/favicon/favicon-16x16.png`, `favicon-32x32.png`, `favicon.ico` | PNG at those exact sizes, plus an ICO. |
+| Phone home-screen icons | `static/favicon/apple-touch-icon.png` (180 × 180), `android-chrome-192x192.png`, `android-chrome-256x256.png`, `mstile-150x150.png`, `safari-pinned-tab.svg` | PNG at the size in the name; the Safari one is a single-color SVG. |
+| Image shown when a link is shared (Slack, LinkedIn, etc.) | the file named by `og_image` in `hugo.toml` (now `static/images/tailbliss-cover.png`) | PNG or JPG, 1200 × 630. |
+
+The easiest way to get the favicon set is to upload one square logo (512 × 512 px or larger) to [RealFaviconGenerator](https://realfavicongenerator.net/) and copy the files it produces into `static/favicon/`. If you also copy its `site.webmanifest`, change each icon path inside it from `/favicon/...` to `/blog/favicon/...`: Hugo doesn't rewrite paths inside that file.
 
 **Why `assets/` and not `static/`?** Files in `static/` are copied to the site byte-for-byte. Files in `assets/` can be resized, cropped and converted to WebP by Hugo. The home page templates only look in `assets/`, which is why images in `static/` never showed up there.
 

@@ -1,6 +1,6 @@
 baseURL = 'https://czarified.github.io/blog/'
 locale = 'en-us'
-title = 'Bloggy McBlogFace'
+title = 'Back of the Envelope'
 # The site lives in a sub-folder (/blog/), so every link must be built from
 # baseURL. canonifyURLs does that; relativeURLs broke theme images (/blog/blog/...).
 relativeURLs = false
@@ -44,7 +44,7 @@ enableRobotsTXT = true
 
 [params]
   author = 'Benjamin Crews'
-  moto = 'Bloggy Blog Blog'
+  moto = "Unpolished, incorrect, but maybe there's a good idea here somewhere..."
   description = 'The personal blog of Benjamin Crews.'
   og_image = '/images/tailbliss-cover.png'
   newsletter_signup = false
@@ -95,13 +95,15 @@ enableRobotsTXT = true
 [params.p1]
   heading = 'About This Site'
   image = 'images/global/none.jpg'
+  crop = '600x600'      # width x height in pixels; sets the image's shape
   content = [
     { text = 'Welcome! I write about structural engineering, software development, and personal projects.' }
   ]
 
 [params.p2]
-  heading = 'What I Working On'
+  heading = "What I'm Working On"
   image = 'images/global/projects.png'
+  crop = '800x600'     # width x height in pixels; taller than wide = portrait
   content = [
     { text = 'Check out my latest blog posts below to see recent projects and tutorials.' }
   ]
