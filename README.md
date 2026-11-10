@@ -135,6 +135,12 @@ featured_image = 'cover.jpg'       # optional; a file in this folder
 ![Alt text describing the image](fbd.png)
 ```
 
+For a visible caption under the image, use Hugo's built-in `figure` shortcode instead (the posts migrated from LinkedIn do this):
+
+```markdown
+{{< figure src="fbd.png" alt="Free body diagram" caption="Free body diagram of the clip" >}}
+```
+
 **Tables.** Standard Markdown tables:
 
 ```markdown
