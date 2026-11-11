@@ -49,6 +49,10 @@ enableRobotsTXT = true
   og_image = '/images/tailbliss-cover.png'
   newsletter_signup = false
 
+  # Width of the text column on posts. Any CSS length: '80ch' (~80 characters),
+  # '56rem', '900px'. The theme's original width was '65ch'.
+  post_width = '80ch'
+
   # Big image at the top of the home page. Path is relative to assets/.
   heroimage = 'images/global/hero.jpg'
   heroalt = 'Benjamin Crews'

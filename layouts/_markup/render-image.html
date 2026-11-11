@@ -1,0 +1,10 @@
+{{- /* Override (new file): every Markdown image ![alt](file "title") is wrapped in a
+     link to the full-size file, which opens in a new tab. Images beside the post
+     (page bundle) resolve through the page's resources; anything else uses the
+     path as written. */ -}}
+{{- $src := .Destination -}}
+{{- with .Page.Resources.Get .Destination -}}{{ $src = .RelPermalink }}{{- end -}}
+<a class="img-link" href="{{ $src | safeURL }}" target="_blank" rel="noopener" title="Open full size">
+  <img src="{{ $src | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy">
+</a>
+{{- /* chomp trailing newline */ -}}
