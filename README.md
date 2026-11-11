@@ -22,9 +22,12 @@ If you know Python, think of this as a build script that renders Jinja-style tem
 | File | Why |
 | --- | --- |
 | `layouts/index.html` | Hero image comes from `hugo.toml`; images are cropped instead of stretched. |
-| `layouts/partials/head.html` | Preloads your hero image; loads the math font CSS on pages with math. |
+| `layouts/partials/head.html` | Preloads your hero image; loads the math font CSS on pages with math; sets the post text width from `post_width`. |
 | `layouts/partials/post-tile.html`, `layouts/_default/single.html` | `featured_image` can be a file in the post's own folder. |
 | `layouts/_markup/render-passthrough.html` | Renders `$...$` math with KaTeX. |
+| `layouts/_markup/render-image.html`, `layouts/_shortcodes/figure.html` | Clicking an image in a post opens the full-size file in a new tab. |
+
+**Post text width:** set `post_width` under `[params]` in `hugo.toml` (now `'80ch'`, about 80 characters per line; the theme's default was `'65ch'`). Any CSS length works, such as `'56rem'` or `'900px'`.
 
 ## One-time setup (Windows)
 
@@ -140,6 +143,8 @@ For a visible caption under the image, use Hugo's built-in `figure` shortcode in
 ```markdown
 {{< figure src="fbd.png" alt="Free body diagram" caption="Free body diagram of the clip" >}}
 ```
+
+Either way, readers can click the image to open the full-size file in a new tab, so a large, detailed original is fine. To send the click somewhere else, add `link="https://..."` to the `figure`.
 
 **Tables.** Standard Markdown tables:
 

@@ -84,4 +84,8 @@ The x-cloak directive is located in the head partial to prevent rollup from Vite
   .prose .katex-display { overflow-x: auto; overflow-y: hidden; padding: 0.25rem 0; }
   .prose table { display: block; overflow-x: auto; }
   .prose img { margin-left: auto; margin-right: auto; border-radius: 0.5rem; }
+  /* Post text column width (params.post_width in hugo.toml; the theme default is 65ch) */
+  .post-body { max-width: {{ site.Params.post_width | default "80ch" | safeCSS }}; }
+  /* Images in posts link to the full-size file (layouts/_markup/render-image.html) */
+  .prose a.img-link { display: block; cursor: zoom-in; }
 </style>

@@ -1,0 +1,22 @@
+{{- /* Override (replaces Hugo's built-in figure shortcode): same parameters
+     (src, alt, caption, title, link, target, class, width, height), but when
+     no link= is given the image links to its own full-size file in a new tab,
+     like plain Markdown images (layouts/_markup/render-image.html). */ -}}
+{{- $src := .Get "src" -}}
+{{- with .Page.Resources.Get $src -}}{{ $src = .RelPermalink }}{{- end -}}
+{{- $link := .Get "link" | default $src -}}
+{{- $target := .Get "target" | default (cond (eq $link $src) "_blank" "") -}}
+<figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+  <a class="img-link" href="{{ $link | safeURL }}"{{ with $target }} target="{{ . }}" rel="noopener"{{ end }} title="Open full size">
+    <img src="{{ $src | safeURL }}"
+      {{- with .Get "alt" | default (.Get "caption" | plainify) }} alt="{{ . }}"{{ end }}
+      {{- with .Get "width" }} width="{{ . }}"{{ end }}
+      {{- with .Get "height" }} height="{{ . }}"{{ end }} loading="lazy">
+  </a>
+  {{- if or (.Get "title") (.Get "caption") }}
+  <figcaption>
+    {{- with .Get "title" }}<h4>{{ . }}</h4>{{ end }}
+    {{- with .Get "caption" }}<p>{{ . | markdownify }}</p>{{ end }}
+  </figcaption>
+  {{- end }}
+</figure>
